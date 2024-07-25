@@ -8,3 +8,4 @@ markdownify
 bs4
 python-dotenv
 markdown2
+pysqlite3-binary
