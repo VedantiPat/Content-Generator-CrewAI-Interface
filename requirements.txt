@@ -1,0 +1,10 @@
+crewai
+textwrap3
+streamlit
+typing
+crewai_tools
+requests
+markdownify
+bs4
+python-dotenv
+markdown2
