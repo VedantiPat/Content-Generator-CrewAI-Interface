@@ -4,8 +4,6 @@ from tasks import ContentGenerationTasks
 from agents import ContentGenerationAgents
 from tools import Extraction_Tools
 import os
-from st_copy_to_clipboard import st_copy_to_clipboard
-
 os.environ["OPENAI_MODEL_NAME"]="gpt-4o-mini"
 
 class ContentGeneratorUI:
@@ -70,14 +68,13 @@ class ContentGeneratorUI:
             )
             with st.container():
                 st.write("Content generated successfully!")
-                st_copy_to_clipboard(st.mardown(st.session_state.content))
                 st.markdown(st.session_state.content)
             st.session_state.generating = False
     
     def sidebar(self):
         with st.sidebar:
             st.title("Written Content Generator")
-            
+
             st.write(
                 """
                 To get started, enter a prompt for the new content you would like to be generated, specifying type of content (blogpost, linkedIn post, etc.), as well as any word count limitations or other details. \n
