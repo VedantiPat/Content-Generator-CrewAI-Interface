@@ -4,6 +4,8 @@ from tasks import ContentGenerationTasks
 from agents import ContentGenerationAgents
 from tools import Extraction_Tools
 import os
+from st_copy_to_clipboard import st_copy_to_clipboard
+
 os.environ["OPENAI_MODEL_NAME"]="gpt-4o-mini"
 
 class ContentGeneratorUI:
@@ -74,14 +76,11 @@ class ContentGeneratorUI:
     def sidebar(self):
         with st.sidebar:
             st.title("Written Content Generator")
-
+            st_copy_to_clipboard("Copy this to clipboard")
             st.write(
                 """
-                Welcome to the Written Content Generator! \n
-                You can use this generator to create a new blogpost, LinkedIn post... anything you can imagine! \n
                 To get started, enter a prompt for the new content you would like to be generated, specifying type of content (blogpost, linkedIn post, etc.), as well as any word count limitations or other details. \n
                 Additionally, provide a url to a writing piece you would like to be used for stylistic/formatting context! \n
-                Click Generate and watch the magic happen!
                 """
             )
 
