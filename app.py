@@ -1,5 +1,5 @@
 import streamlit as st
-from crewai import Crew
+from crewai import Crew, Process
 from tasks import ContentGenerationTasks
 from agents import ContentGenerationAgents
 from tools import Extraction_Tools
@@ -53,7 +53,8 @@ class ContentGeneratorUI:
                 researcher_task,
                 writer_task,
                 humanizer_task
-            ]
+            ],
+            process=Process.sequential
         )
 
         result = content_generation_crew.kickoff()
