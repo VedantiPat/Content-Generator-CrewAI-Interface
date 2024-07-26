@@ -70,13 +70,14 @@ class ContentGeneratorUI:
             )
             with st.container():
                 st.write("Content generated successfully!")
+                st_copy_to_clipboard(st.session_state.content)
                 st.markdown(st.session_state.content)
             st.session_state.generating = False
     
     def sidebar(self):
         with st.sidebar:
             st.title("Written Content Generator")
-            st_copy_to_clipboard("Copy this to clipboard")
+            
             st.write(
                 """
                 To get started, enter a prompt for the new content you would like to be generated, specifying type of content (blogpost, linkedIn post, etc.), as well as any word count limitations or other details. \n
