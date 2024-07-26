@@ -1,5 +1,5 @@
 import streamlit as st
-from crewai import Crew
+from crew_vp import Crew
 from tasks import ContentGenerationTasks
 from agents import ContentGenerationAgents
 from tools import Extraction_Tools
