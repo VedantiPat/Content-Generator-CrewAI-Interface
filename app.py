@@ -70,7 +70,7 @@ class ContentGeneratorUI:
             )
             with st.container():
                 st.write("Content generated successfully!")
-                st_copy_to_clipboard(st.session_state.content)
+                st_copy_to_clipboard(st.mardown(st.session_state.content))
                 st.markdown(st.session_state.content)
             st.session_state.generating = False
     
