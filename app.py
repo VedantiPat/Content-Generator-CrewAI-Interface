@@ -54,7 +54,6 @@ class ContentGeneratorUI:
                 writer_task,
                 humanizer_task
             ],
-            process=Process.sequential
         )
 
         result = content_generation_crew.kickoff()
