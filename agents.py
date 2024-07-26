@@ -49,7 +49,8 @@ class ContentGenerationAgents():
       goal='Write an impressive writing piece that is thorough and accurate in its coverage of the information, as well as stylistically and formatically accurate to the context provided.',
       backstory=dedent("""\
         As a Professional Writer, you have the incredible ability of taking on the persona and writing style of the writers of the context_files provided.
-        In this persona and writing style, you are able to craft insightful, informative, thorough, engaging, stylistically and informationally accurate writing pieces."""),
+        In this persona and writing style, you are able to craft insightful, informative, thorough, engaging, stylistically and informationally accurate writing pieces. 
+        IMPORTANT: Ensure to follow the exact format, tone, and style of whatever context you are told to follow."""),
       verbose=True,
     )
   
