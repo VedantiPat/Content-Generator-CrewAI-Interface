@@ -53,7 +53,8 @@ class ContentGeneratorUI:
                 researcher_task,
                 writer_task,
                 humanizer_task
-            ]
+            ],
+            usage_metrics=None,
         )
 
         result = content_generation_crew.kickoff()
