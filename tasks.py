@@ -73,8 +73,6 @@ class ContentGenerationTasks():
                 - IMPORTANT: In the exact writing style, format, and word count of the template, write a new writing piece on topic using the information from the research report.
                 - At the end of the writing piece, include a section for SEO keywords and metatags that we can put in our writing piece. 
                 - Ensure that there are no spelling or grammar errors, and that the writing is professional.
-                - Revise this piece multiple times to make it sound as engaging and insightful as possible. 
-                - Revise again to make sure the writing has a similar word count to and matched the exact formatting of the template, making it as consistent with it as possible.
             """),
             expected_output=dedent(f"""\
                 A writing piece with clear, accurate, stylistically consistent writing that clearly reflects the topic and matches the format of writing of the output from extraction_task. This should be in markdown format."""),
