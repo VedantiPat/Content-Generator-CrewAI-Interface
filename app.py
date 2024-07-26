@@ -68,7 +68,7 @@ class ContentGeneratorUI:
             )
             with st.container():
                 st.write("Content generated successfully!")
-                st.write(st.session_state.content)
+                st.markdown(st.session_state.content)
             st.session_state.generating = False
     
     def sidebar(self):
