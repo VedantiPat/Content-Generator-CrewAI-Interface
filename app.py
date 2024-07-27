@@ -5,7 +5,7 @@ from agents import ContentGenerationAgents
 from tools import Extraction_Tools
 import os
 os.environ["OPENAI_MODEL_NAME"]="gpt-4o-mini"
-from st-copy-to-clipboard import st-copy-to-clipboard
+from st_copy_to_clipboard import st_copy_to_clipboard
 
 class ContentGeneratorUI:
 
