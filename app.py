@@ -74,7 +74,7 @@ class ContentGeneratorUI:
     
     def sidebar(self):
         with st.sidebar:
-            st.title("Written Content Generator ✍️")
+            st.title("Written Content Generator  ✍️")
 
             st.write(
                 """
