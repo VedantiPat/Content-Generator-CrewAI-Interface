@@ -68,7 +68,7 @@ class ContentGeneratorUI:
             )
             with st.container():
                 col1, col2 = st.columns(2)
-                with col:
+                with col1:
                     st.write("Content generated successfully!")
                 with col2:
                     st_copy_to_clipboard(str(st.session_state.content))
