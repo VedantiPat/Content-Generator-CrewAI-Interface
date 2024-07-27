@@ -67,8 +67,11 @@ class ContentGeneratorUI:
                 st.session_state.prompt, st.session_state.link, st.session_state.openai, st.session_state.serper
             )
             with st.container():
-                st.write("Content generated successfully!")
-                st_copy_to_clipboard(str(st.session_state.content))
+                col1, col2 = st.columns(2)
+                with col:
+                    st.write("Content generated successfully!")
+                with col2:
+                    st_copy_to_clipboard(str(st.session_state.content))
                 st.markdown(st.session_state.content)
             st.session_state.generating = False
     
