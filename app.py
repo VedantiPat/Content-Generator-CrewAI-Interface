@@ -84,10 +84,12 @@ class ContentGeneratorUI:
             st.text_area("Prompt", key="prompt", placeholder="Write a blogpost about...")
 
             st.text_input("Link", key="link", placeholder="https://www.coforge.com/blog...")
+            
+            urlgpt = "https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key"
+            st.text_input("OpenAI API Key (click [here](%s) for more)" % urlgpt, key="openai", type="password")
 
-            st.text_input("OpenAI API Key", key="openai", type="password")
-
-            st.text_input("SerperDev API Key", key="serper", type="password")
+            urlserper = "https://serper.dev/api-key"
+            st.text_input("SerperDev API Key (click [here](%s) for more)" % urlserper, key="serper", type="password")
 
             if st.button("Generate!"):
                 st.session_state.generating = True
