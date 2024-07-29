@@ -97,7 +97,7 @@ class ContentGeneratorUI:
 
             model_options = ["gpt-4o-mini (1-3 cents)", "gpt-4o (5-10 cents)"]
 
-            if st.session_state.model not in model_options:
+            if "model" not in st.session_state:
                 st.session_state.model = model_options[0]  # Set a default valid option if the current value is invalid
     
             st.selectbox(
