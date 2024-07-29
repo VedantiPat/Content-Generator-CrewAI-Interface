@@ -54,7 +54,7 @@ class ContentGenerationAgents():
       verbose=True,
     )
   
-  
+  """
   def humanizer_agent(self):
     return Agent(
       role='Humanizer',
@@ -65,3 +65,4 @@ class ContentGenerationAgents():
       """),
       verbose=True,
     )
+"""
