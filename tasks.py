@@ -99,7 +99,7 @@ class ContentGenerationTasks():
             agent=agent
         )
     
-    
+ """   
     def humanizer_task(self, agent):
         return Task(
             description=dedent(f"""\
@@ -115,5 +115,5 @@ class ContentGenerationTasks():
             """),
             agent=agent
         )
-    
+"""    
     
