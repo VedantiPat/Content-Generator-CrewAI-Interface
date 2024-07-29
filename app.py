@@ -97,10 +97,9 @@ class ContentGeneratorUI:
 
             st.selectbox(
                 "Select an OpenAI model",
-                ("gpt-4o (5-10 cents)", "gpt-4o-mini (1-3 cents)"),
-                index=None,
+                ("gpt-4o-mini (1-3 cents)", "gpt-4o (5-10 cents)"),
+                index=0,
                 key="model",
-                placeholder="Select model...",
             )
 
             if st.button("Generate!"):
