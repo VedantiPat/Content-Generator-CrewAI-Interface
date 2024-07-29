@@ -1,10 +1,10 @@
 import streamlit as st
-from crew_vp import Crew
+from crew_vp import Crew, Process
 from tasks import ContentGenerationTasks
 from agents import ContentGenerationAgents
 from tools import Extraction_Tools
 import os
-#os.environ["OPENAI_MODEL_NAME"]="gpt-4o-mini"
+os.environ["OPENAI_MODEL_NAME"]="gpt-4o-mini"
 from st_copy_to_clipboard import st_copy_to_clipboard
 
 class ContentGeneratorUI:
@@ -34,6 +34,7 @@ class ContentGeneratorUI:
         writer_task = tasks.writer_task(writer_agent)
         humanizer_task = tasks.humanizer_task(humanizer_agent)
 
+        analyze_prompt_task.context = [extraction_task]
         researcher_task.context = [analyze_prompt_task]
         writer_task.context = [extraction_task, analyze_prompt_task, researcher_task]
         humanizer_task.context = [writer_task]
@@ -55,12 +56,13 @@ class ContentGeneratorUI:
                 writer_task,
                 humanizer_task
             ],
+            process=Process.sequential
         )
 
         result = content_generation_crew.kickoff()
-        output = humanizer_task.output
+        #output = humanizer_task.output
 
-        return output
+        return result
     
     def content_generation(self):
         if st.session_state.generating:
