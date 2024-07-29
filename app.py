@@ -4,16 +4,20 @@ from tasks import ContentGenerationTasks
 from agents import ContentGenerationAgents
 from tools import Extraction_Tools
 import os
-#os.environ["OPENAI_MODEL_NAME"]="gpt-4o-mini"
 from st_copy_to_clipboard import st_copy_to_clipboard
 
 class ContentGeneratorUI:
 
-    def generate_content(self, prompt, link, openai_key, serper_key):
+    def generate_content(self, prompt, link, openai_key, serper_key, model):
         
         
         os.environ["OPENAI_API_KEY"] = openai_key
         os.environ["SERPER_API_KEY"] = serper_key
+
+        if model == "gpt-4o (5-10 cents)":
+            os.environ["OPENAI_MODEL_NAME"]="gpt-4o"
+        elif model == "gpt-4o-mini (1-3 cents)":
+            os.environ["OPENAI_MODEL_NAME"]="gpt-4o-mini"
 
         content_prompt = prompt
         context = link
@@ -61,7 +65,7 @@ class ContentGeneratorUI:
     def content_generation(self):
         if st.session_state.generating:
             st.session_state.content = self.generate_content(
-                st.session_state.prompt, st.session_state.link, st.session_state.openai, st.session_state.serper
+                st.session_state.prompt, st.session_state.link, st.session_state.openai, st.session_state.serper, st.session_state.model
             )
             with st.container():
                 st.write("Content generated successfully!")
@@ -90,7 +94,13 @@ class ContentGeneratorUI:
             urlserper = "https://serper.dev/api-key"
             st.text_input("SerperDev API Key (click [here](%s) for more)" % urlserper, key="serper", type="password")
 
-            
+            st.selectbox(
+                "Select an OpenAI model",
+                ("gpt-4o (5-10 cents)", "gpt-4o-mini (1-3 cents)"),
+                index=None,
+                key="model",
+                placeholder="Select model...",
+            )
 
             if st.button("Generate!"):
                 st.session_state.generating = True
@@ -110,6 +120,9 @@ class ContentGeneratorUI:
         
         if "serper" not in st.session_state:
             st.session_state.serper = ""
+
+        if "model" not in st.session_state:
+            st.session_state.model = ""
 
         if "content" not in st.session_state:
             st.session_state.content = ""
