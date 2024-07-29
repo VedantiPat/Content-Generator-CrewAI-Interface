@@ -58,7 +58,7 @@ class ContentGeneratorUI:
         )
 
         result = content_generation_crew.kickoff()
-        output = humanizer_task.output.raw_output
+        output = humanizer_task.output
 
         return output
     
