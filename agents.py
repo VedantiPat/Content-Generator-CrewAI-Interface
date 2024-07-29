@@ -55,14 +55,4 @@ class ContentGenerationAgents():
     )
   
 
-  def humanizer_agent(self):
-    return Agent(
-      role='Humanizer',
-      goal='Humanize the text to create a text that sounds more human and stylized and can pass AI detection software, while maintaining the style, tone, and format of the original text.',
-      backstory=dedent("""\
-        As a Humanizer, you are a master at human language, tone, and natural language, and you are able to effectively replicate human speech. You are a master at taking AI generated text and
-        making it sound like it was written by a human.
-      """),
-      verbose=True,
-    )
 
