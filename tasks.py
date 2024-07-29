@@ -95,24 +95,10 @@ class ContentGenerationTasks():
 
             """),
             expected_output=dedent(f"""\
-                A writing piece with clear, accurate, stylistically consistent writing that clearly reflects the topic and matches the format of writing of the output from extraction_task. This should be in markdown format."""),
+                A writing piece with clear, accurate, stylistically consistent writing that clearly reflects the topic and matches the format of writing of the output from extraction_task. This should be in markdown format and be displayed as the final output."""),
             agent=agent
         )
     
     
-    def humanizer_task(self, agent):
-        return Task(
-            description=dedent(f"""\
-                Given the final written output from the writer, given by the context from the writer_task, slightly rewrite the text in such a way that the 
-                writing format, style, and content is entirely intact and UNCHANGED but the text is just reworded slightly to make it more humanized. Ensure to maintain as much of the original style and tone of the text as possible
-                and keep it smart and professional.
-            """),
-            expected_output=dedent(f"""\
-                A revised writing piece that is an edited version of the version from the writer_task, ensuring that the writing is similar to the 
-                previous version but just slightly reworded such that the text is humanized and cannot be detected by AI detection software but maintaining the same stylistic quality.
-                This should be in markdown format and be displayed as the final output.
-            """),
-            agent=agent
-        )
-  
+
     
