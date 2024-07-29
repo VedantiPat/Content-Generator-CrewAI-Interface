@@ -65,16 +65,17 @@ class ContentGenerationTasks():
     def writer_task(self, agent):
         return Task(
             description=dedent(f"""\
+                Your main goal is to write a new writing piece on the topic at hand, and to do so, you must do the following tasks.
+
                 Do the following tasks sequentially:
-                - Given the writing piece from the output of the extraction_task, conduct an in-depth analysis to identify the format, patterns of language, and stylistic quality of the text. 
-                - Be sure to account for the word count and length of this writing piece, as well as the format of it, as this will be the word count and format of the new writing piece. This is now your template for writing.
-                - Use the context given from analyze_prompt_task as the topic of your writing. Understand this topic fully and be ready to write on it, this is now your topic.
-                - Using the context given from research_task, analyze this research report to identify all the context from this report that can be used to write a new writing piece on the topic you are to write on.
-                - IMPORTANT: In the exact writing style, format, and word count of the template, write a new writing piece on topic using the information from the research report.
-                - At the end of the writing piece, include a section for SEO keywords and metatags that we can put in our writing piece. 
-                - Ensure that there are no spelling or grammar errors, and that the writing is professional.
-                - Revise this piece to make it sound as engaging and insightful as possible. 
-                - Revise again to make sure the writing has a similar word count to and matched the exact formatting of the template, making it as consistent with it as possible.
+                    - Take the output of the extraction task. This output will serve as a writing template for the new writing piece. Analyze the format, word count, patterns of language, and stylistic quality of this text, as this will serve as the template for the new writing piece.
+                    - Take the context given from analyze_prompt_task. Identify the topic from this detailed prompt and understand the specific things outlined for the writer in this prompt. This is now the topic for your writing.
+                    - Take the context given from research_task. Analyze this research report to identify all the context from this report that can be used to write a new writing piece on the topic you are to write on.
+                    - Now, using all of this information, in the exact writing style, format, and word count of the template, write a new writing piece on the topic given the information from the research report.
+                    - At the end of the writing piece, include a section for SEO keywords and metatags that we can put in our writing piece. 
+                    - Ensure that there are no spelling or grammar errors, and that the writing is professional.
+                    - Revise this piece to make it sound as engaging and insightful as possible. 
+                    - Revise again to make sure the writing has a similar word count to and matched the exact formatting of the template, making it as consistent with it as possible.
             """),
             expected_output=dedent(f"""\
                 A writing piece with clear, accurate, stylistically consistent writing that clearly reflects the topic and matches the format of writing of the output from extraction_task. This should be in markdown format."""),
