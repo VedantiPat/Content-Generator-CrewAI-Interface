@@ -78,7 +78,7 @@ class ContentGenerationTasks():
                     - Revise again to make sure the writing has a similar word count to and matched the exact formatting of the template, making it as consistent with it as possible.
             """),
             expected_output=dedent(f"""\
-                A writing piece with clear, accurate, stylistically consistent writing that clearly reflects the topic and matches the format of writing of the output from extraction_task. This should be in markdown format."""),
+                A writing piece with clear, accurate, stylistically consistent writing that clearly reflects the topic and matches the format of writing of the output from extraction_task."""),
             agent=agent
         )
     
@@ -94,7 +94,7 @@ class ContentGenerationTasks():
             expected_output=dedent(f"""\
                 A revised writing piece that is an edited version of the version from the writer_task, ensuring that the writing is similar to the 
                 previous version but just reworded such that the text is humanized and cannot be detected by AI detection software but maintaining the same stylistic quality.
-                This should be in markdown format and be displayed in the terminal as an output.
+                This should be in markdown format and be displayed as the final answer.
             """),
             agent=agent
         )
