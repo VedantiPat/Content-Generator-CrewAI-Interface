@@ -26,18 +26,15 @@ class ContentGeneratorUI:
         prompt_analyst_agent = agents.prompt_analyst_agent()
         researcher_agent = agents.researcher_agent()
         writer_agent = agents.writer_agent()
-        humanizer_agent = agents.humanizer_agent()
 
         extraction_task = tasks.extraction_task(extraction_agent, context_file)
         analyze_prompt_task = tasks.analyze_prompt_task(prompt_analyst_agent, content_prompt)
         researcher_task = tasks.research_task(researcher_agent)
         writer_task = tasks.writer_task(writer_agent)
-        humanizer_task = tasks.humanizer_task(humanizer_agent)
 
         analyze_prompt_task.context = [extraction_task]
         researcher_task.context = [analyze_prompt_task]
         writer_task.context = [extraction_task, analyze_prompt_task, researcher_task]
-        humanizer_task.context = [writer_task]
 
         
         content_generation_crew = Crew(
@@ -47,20 +44,17 @@ class ContentGeneratorUI:
                 prompt_analyst_agent,
                 researcher_agent,
                 writer_agent,
-                humanizer_agent
             ],
             tasks = [
                 extraction_task,
                 analyze_prompt_task,
                 researcher_task,
                 writer_task,
-                humanizer_task
             ],
             process=Process.sequential
         )
 
         result = content_generation_crew.kickoff()
-        #output = humanizer_task.output
 
         return result
     
@@ -95,6 +89,8 @@ class ContentGeneratorUI:
 
             urlserper = "https://serper.dev/api-key"
             st.text_input("SerperDev API Key (click [here](%s) for more)" % urlserper, key="serper", type="password")
+
+            
 
             if st.button("Generate!"):
                 st.session_state.generating = True
