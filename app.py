@@ -47,18 +47,19 @@ class ContentGeneratorUI:
                 extraction_agent,
                 prompt_analyst_agent,
                 researcher_agent,
-                writer_agent,
+                writer_agent
             ],
             tasks = [
                 extraction_task,
                 analyze_prompt_task,
                 researcher_task,
-                writer_task,
+                writer_task
             ],
             process=Process.sequential
         )
 
         result = content_generation_crew.kickoff()
+
 
         return result
     
