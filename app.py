@@ -95,12 +95,18 @@ class ContentGeneratorUI:
             urlserper = "https://serper.dev/api-key"
             st.text_input("SerperDev API Key (click [here](%s) for more)" % urlserper, key="serper", type="password")
 
+            model_options = ["gpt-4o-mini (1-3 cents)", "gpt-4o (5-10 cents)"]
+
+            if st.session_state.model not in model_options:
+                st.session_state.model = model_options[0]  # Set a default valid option if the current value is invalid
+    
             st.selectbox(
                 "Select an OpenAI model",
-                options=["gpt-4o-mini (1-3 cents)", "gpt-4o (5-10 cents)"],
-                index=0,
+                options=model_options,
+                index=model_options.index(st.session_state.model),
                 key="model",
             )
+
 
             if st.button("Generate!"):
                 st.session_state.generating = True
@@ -120,9 +126,6 @@ class ContentGeneratorUI:
         
         if "serper" not in st.session_state:
             st.session_state.serper = ""
-
-        if "model" not in st.session_state:
-            st.session_state.model = ""
 
         if "content" not in st.session_state:
             st.session_state.content = ""
