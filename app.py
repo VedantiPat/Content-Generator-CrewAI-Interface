@@ -58,8 +58,9 @@ class ContentGeneratorUI:
         )
 
         result = content_generation_crew.kickoff()
+        output = humanizer_task.output.raw_output
 
-        return result
+        return output
     
     def content_generation(self):
         if st.session_state.generating:
