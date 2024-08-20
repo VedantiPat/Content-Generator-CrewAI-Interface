@@ -1,13 +1,7 @@
 from crewai import Task
-from crewai_tools import SerperDevTool, ScrapeWebsiteTool
 from textwrap3 import dedent
-
-
-
-
-
-
-search_tool = SerperDevTool()
+from langchain_community.tools import DuckDuckGoSearchRun# Initialize the tool
+search_tool = DuckDuckGoSearchRun()
 
 
 
@@ -21,7 +15,9 @@ class ContentGenerationTasks():
                 Given the markdown document created from this webpage, given by context_file, you are to carefully parse the entire
                 markdown document and identify parts of this document that can be a part of that writing piece on the page, including a title, body, and any other components
                 that seem to be a part of that writing piece. After all these parts are identified, create a new organized file that consolidates just this writing piece from
-                the entirety of the markdown document.                     
+                the entirety of the markdown document.
+
+                *If the file provided by context_file is blank, put the output as "None" and go to the next agent.*
                 context_file: {context_file}
             """),
             expected_output=dedent(f"""\
@@ -84,7 +80,8 @@ class ContentGenerationTasks():
                 Your main goal is to write a new writing piece on the topic at hand, and to do so, you must do the following tasks.
 
                 Do the following tasks sequentially:
-                - Take the output of the extraction task. This output will serve as a writing template for the new writing piece. Analyze the format, word count, patterns of language, and stylistic quality of this text and use this for the new writing piece.
+                - Take the output of the extraction_task. This output will serve as a writing template for the new writing piece. Analyze the format, word count, patterns of language, and stylistic quality of this text and use this for the new writing piece.
+                - *If the output from extraction_task is "None", use your own expertise to write the new piece in a relevant format, style and tone based on the prompt given.*
                 - Take the context given from analyze_prompt_task. Identify the topic from this detailed prompt and understand the specific things outlined for the writer in this prompt. This is now the topic for your writing.
                 - Take the context given from research_task. Analyze this research report to identify all the context from this report that can be used to write a new writing piece on the topic you are to write on.
                 - Now, using all of this information, in the exact writing style, format, and word count of the template, write a new writing piece on the topic given the information from the research report.
