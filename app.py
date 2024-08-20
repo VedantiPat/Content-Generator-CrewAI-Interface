@@ -8,11 +8,10 @@ from st_copy_to_clipboard import st_copy_to_clipboard
 
 class ContentGeneratorUI:
 
-    def generate_content(self, prompt, link, openai_key, serper_key, model):
+    def generate_content(self, prompt, link, openai_key, model):
         
         
         os.environ["OPENAI_API_KEY"] = openai_key
-        os.environ["SERPER_API_KEY"] = serper_key
 
         if model == "gpt-4o (5-10 cents)":
             os.environ["OPENAI_MODEL_NAME"]="gpt-4o"
@@ -70,7 +69,7 @@ class ContentGeneratorUI:
     def content_generation(self):
         if st.session_state.generating:
             st.session_state.content = self.generate_content(
-                st.session_state.prompt, st.session_state.link, st.session_state.openai, st.session_state.serper, st.session_state.model
+                st.session_state.prompt, st.session_state.link, st.session_state.openai, st.session_state.model
             )
             with st.container():
                 st.write("Content generated successfully!")
@@ -96,8 +95,6 @@ class ContentGeneratorUI:
             urlgpt = "https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key"
             st.text_input("OpenAI API Key (click [here](%s) for more)" % urlgpt, key="openai", type="password")
 
-            urlserper = "https://serper.dev/api-key"
-            st.text_input("SerperDev API Key (click [here](%s) for more)" % urlserper, key="serper", type="password")
 
             model_options = ["gpt-4o-mini (1-3 cents)", "gpt-4o (5-10 cents)"]
 
@@ -128,8 +125,6 @@ class ContentGeneratorUI:
         if "openai" not in st.session_state:
             st.session_state.openai = ""
         
-        if "serper" not in st.session_state:
-            st.session_state.serper = ""
 
         if "content" not in st.session_state:
             st.session_state.content = ""
