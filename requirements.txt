@@ -11,3 +11,4 @@ markdown2
 pysqlite3-binary
 st-copy-to-clipboard
 langchain-community
+duckduckgo_search
