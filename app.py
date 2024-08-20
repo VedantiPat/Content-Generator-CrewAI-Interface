@@ -21,7 +21,11 @@ class ContentGeneratorUI:
 
         content_prompt = prompt
         context = link
-        context_file = Extraction_Tools.url_to_md(context)
+
+        if context == "":
+            context_file = ""
+        else:
+            context_file = Extraction_Tools.url_to_md(context)
 
         tasks = ContentGenerationTasks()
         agents = ContentGenerationAgents()
