@@ -27,7 +27,6 @@ This AI-powered content generator was developed to **automate marketing content 
 - **Increased Content Output**: Helped the marketing team **scale content production**, ensuring a consistent online presence.
 - **Time & Cost Efficiency**: Reduced the time required to draft content, allowing teams to focus on strategy and engagement.
 - **Potential Client-Facing Product**: Plans to **offer this tool to clients** for AI-driven content automation.
-```
 
 ## 🏆 About the Developer
 👋 Hi, I’m **Vedanti Patil**, a passionate AI and software developer specializing in **automation, AI-driven workflows, and content generation tools**.
